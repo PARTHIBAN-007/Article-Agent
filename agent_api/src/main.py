@@ -3,11 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 from src.api import chat
+from src.db.session import init_engine, close_engine
 
 async def lifespan(app: FastAPI):
-    # Perform any startup tasks here
+    init_engine()
     yield
-    # Perform any shutdown tasks here
+    close_engine()
 
 app = FastAPI(
     title = "Article Agent API",

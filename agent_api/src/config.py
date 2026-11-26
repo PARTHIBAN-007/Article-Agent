@@ -1,17 +1,23 @@
 from functools import lru_cache
 from typing import List
-from pydantic_settings import BaseSettings, Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+from pydantic import Field
 
 class Settings(BaseSettings):
-    """Application settings."""
-    OLLAMA_BASE_URL: str = Field(..., env="OLLAMA_BASE_URL")
-    OLLAMA_MODEL_NAME: str = Field(..., env="OLLAMA_MODEL_NAME")
+    model_config = SettingsConfigDict(env_file="./.env", extra="ignore")
+    OLLAMA_BASE_URL: str 
+    OLLAMA_MODEL_NAME: str 
+    OLLAMA_EMBEDDING_MODEL_NAME: str
 
-    OPENROUTER_BASE_URL: str = Field(..., env="OPENROUTER_BASE_URL")
-    OPENROUTER_API_KEY: str = Field(..., env="OPENROUTER_API_KEY")
-    OPENROUTER_MODEL_NAME: str = Field(..., env="OPENROUTER_MODEL_NAME")
+    OPENROUTER_BASE_URL: str 
+    OPENROUTER_API_KEY: str 
+    OPENROUTER_MODEL_NAME: str 
+    OPENROUTER_EMBEDDING_MODEL_NAME: str 
 
-    POSTGRES_HOST: str = Field(..., env="POSTGRES_HOST")
+    POSTGRES_HOST: str 
+
 
 from functools import lru_cache
 
