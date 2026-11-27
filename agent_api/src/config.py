@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     OLLAMA_MODEL_NAME: str 
     OLLAMA_EMBEDDING_MODEL_NAME: str
 
+    user_agent: str = "article-agent/0.1 (welcome@articleagent.com)"
+    request_timeout_s: float = 15.0
+    max_article_bytes: int = 5_000_000
+
     OPENROUTER_BASE_URL: str 
     OPENROUTER_API_KEY: str 
     OPENROUTER_MODEL_NAME: str 

@@ -18,3 +18,5 @@ app = FastAPI(
 )
 
 app.include_router(chat.router,prefix="/api/chat",tags = ["chat"])
+
+

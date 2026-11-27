@@ -3,6 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
 from src.config import get_settings
 from collections.abc import AsyncIterator
 
+from loguru import logger
 _engine =  None
 _session_factory = None
 
@@ -16,6 +17,7 @@ def init_engine():
     global _engine, _session_factory
     _engine = create_async_engine(db_url, echo=True)
     _session_factory = async_sessionmaker(bind=_engine)
+    logger.info(f"Database engine initialized with URL: {db_url}")
 
 
 async def close_engine():
